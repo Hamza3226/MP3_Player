@@ -1,0 +1,36 @@
+pipeline 
+{
+    agent any
+
+    stages 
+    {
+        stage('Build')
+        {
+            steps
+            {
+                echo 'Build App'
+            }
+        }
+        stage('Test')
+        {
+            steps
+            {
+                echo 'Test App'
+            }
+        }
+        stage('Deploy')
+        {
+            steps
+            {
+                echo 'Deploy App'
+            }
+        }
+    }
+    post
+    {
+        always
+        {
+            emailext body: 'Information regarding build of pipeline', subject: 'Pipeline Status', to: 'mohammed.hamza@nagarro.com'
+        }
+    }
+}
